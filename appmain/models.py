@@ -4,7 +4,7 @@ from .utils.paths import *
 
 # Create your models here.
 class Person(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     date_of_birth = models.DateField()
     photo = models.ImageField(upload_to=upload_photo_user)
     address = models.TextField()
@@ -20,6 +20,6 @@ class Product(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     salesman = models.ForeignKey(Salesman, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to=upload_photo_user)
+    photo = models.ImageField(upload_to=upload_photo_product)
     price = models.DecimalField(decimal_places = 2, max_digits = 3)
 
